@@ -1,0 +1,244 @@
+{ "height":12,
+ "layers":[
+        {
+         "compression":"zlib",
+         "data":"eJyNkLEKgDAMRNNCNsFFBx10ELFI\/f\/f8wothKOtDm9pHpdrvIj4CgPYMzPYgHbc5DgQwQGWjr9m15lc\/eFHk9vybRfOVqn\/rXS5wEQ+OwzvsLNyi\/vD55uFTqdaRpB2J84YwUl+mj\/Z4Td2ec8LJ1UG7A==",
+         "encoding":"base64",
+         "height":12,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":12,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":12,
+         "name":"Object Layer 1",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":12,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "renderorder":"right-down",
+ "tileheight":64,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"tileset.jpg",
+         "imageheight":576,
+         "imagewidth":320,
+         "margin":0,
+         "name":"tileset",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "terrains":[
+                {
+                 "name":"grass",
+                 "tile":0
+                }, 
+                {
+                 "name":"dirt",
+                 "tile":1
+                }, 
+                {
+                 "name":"water",
+                 "tile":4
+                }, 
+                {
+                 "name":"sand",
+                 "tile":2
+                }, 
+                {
+                 "name":"gravel",
+                 "tile":3
+                }],
+         "tilecount":45,
+         "tileheight":64,
+         "tiles":
+            {
+             "0":
+                {
+                 "terrain":[0, 0, 0, 0]
+                },
+             "1":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "10":
+                {
+                 "terrain":[0, 0, 0, 1]
+                },
+             "11":
+                {
+                 "terrain":[1, 1, 1, 0]
+                },
+             "12":
+                {
+                 "terrain":[3, 3, 3, 4]
+                },
+             "13":
+                {
+                 "terrain":[4, 4, 4, 3]
+                },
+             "14":
+                {
+                 "terrain":[2, 2, 2, 0]
+                },
+             "15":
+                {
+                 "terrain":[0, 0, 1, 0]
+                },
+             "16":
+                {
+                 "terrain":[1, 1, 0, 1]
+                },
+             "17":
+                {
+                 "terrain":[3, 3, 4, 3]
+                },
+             "18":
+                {
+                 "terrain":[4, 4, 3, 4]
+                },
+             "19":
+                {
+                 "terrain":[2, 2, 0, 2]
+                },
+             "2":
+                {
+                 "terrain":[3, 3, 3, 3]
+                },
+             "20":
+                {
+                 "terrain":[1, 0, 0, 0]
+                },
+             "21":
+                {
+                 "terrain":[0, 1, 1, 1]
+                },
+             "22":
+                {
+                 "terrain":[4, 3, 3, 3]
+                },
+             "23":
+                {
+                 "terrain":[3, 4, 4, 4]
+                },
+             "24":
+                {
+                 "terrain":[0, 2, 2, 2]
+                },
+             "25":
+                {
+                 "terrain":[1, 0, 1, 0]
+                },
+             "27":
+                {
+                 "terrain":[4, 3, 4, 3]
+                },
+             "29":
+                {
+                 "terrain":[0, 2, 0, 2]
+                },
+             "3":
+                {
+                 "terrain":[4, 4, 4, 4]
+                },
+             "30":
+                {
+                 "terrain":[1, 1, 0, 0]
+                },
+             "32":
+                {
+                 "terrain":[4, 4, 3, 3]
+                },
+             "34":
+                {
+                 "terrain":[0, 0, 2, 2]
+                },
+             "35":
+                {
+                 "terrain":[0, 1, 0, 1]
+                },
+             "36":
+                {
+                 "terrain":[2, 0, 0, 0]
+                },
+             "37":
+                {
+                 "terrain":[3, 4, 3, 4]
+                },
+             "38":
+                {
+                 "terrain":[0, 2, 0, 0]
+                },
+             "39":
+                {
+                 "terrain":[2, 0, 2, 0]
+                },
+             "4":
+                {
+                 "terrain":[2, 2, 2, 2]
+                },
+             "40":
+                {
+                 "terrain":[0, 0, 1, 1]
+                },
+             "41":
+                {
+                 "terrain":[0, 0, 2, 0]
+                },
+             "42":
+                {
+                 "terrain":[3, 3, 4, 4]
+                },
+             "43":
+                {
+                 "terrain":[0, 0, 0, 2]
+                },
+             "44":
+                {
+                 "terrain":[2, 2, 0, 0]
+                },
+             "5":
+                {
+                 "terrain":[0, 1, 0, 0]
+                },
+             "6":
+                {
+                 "terrain":[1, 0, 1, 1]
+                },
+             "7":
+                {
+                 "terrain":[3, 4, 3, 3]
+                },
+             "8":
+                {
+                 "terrain":[4, 3, 4, 4]
+                },
+             "9":
+                {
+                 "terrain":[2, 0, 2, 2]
+                }
+            },
+         "tilewidth":64
+        }],
+ "tilewidth":64,
+ "version":1,
+ "width":12
+}
