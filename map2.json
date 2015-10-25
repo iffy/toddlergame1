@@ -13,10 +13,22 @@
          "y":0
         }, 
         {
-         "data":"AAAAAGEAAABiAAAAYwAAAFMAAABUAAAAVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIEAAAADAAAAYwAAAHMAAAB0AAAAdQAAAAAAAAAAAAAAAAAAAFwAAABdAAAAEQEAABIBAACBAAAAgwAAAJMAAACUAAAAlQAAAFwAAABdAAAAXQAAAD4AAAC9AAAA0QAAAFIBAABBAAAAQwAAAA0BAAAPAQAAXAAAAD4AAAC9AAAAvQAAAL4AAAC+AAAAUgEAAEEAAAAjAAAAYwAAAC0BAAAvAQAAfAAAAL4AAAC+AAAAvAAAAL4AAAC+AAAAQQAAACMAAABiAAAAYwAAAE0BAABPAQAAnAAAAJ0AAAAeAAAAvQAAAL0AAAC8AAAAYQAAAGIAAABiAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAB8AAAAvQAAALwAAAC9AAAAYQAAAGIAAABiAAAAIgAAAEIAAABDAAAAAAAAAAAAAACcAAAAnQAAAB4AAAC8AAAAgQAAAIIAAAADAAAAYgAAAGIAAAAiAAAAQgAAAEIAAABDAAAAAAAAAJwAAACdAAAAUQAAAFIAAACBAAAAggAAAAMAAABiAAAAYgAAAGIAAAAiAAAAQgAAAEIAAABCAAAAsgAAADEAAABRAAAAUgAAAIEAAACCAAAAggAAAAMAAABiAAAAYgAAAGIAAABiAAAAcQAAALAAAACyAAAAcgAAAAAAAAAAAAAAAAAAAIEAAACCAAAAggAAAIIAAACCAAAA",
+         "data":"AAAAAGEAAABiAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIEAAAADAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAAAgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAQwAAAAAAAAAAAAAAAAAAAAAAAADBAQAAwgEAAMMBAAAAAAAAAAAAAEEAAAAjAAAAYwAAAAAAAAAAAAAAAAAAAAAAAADhAQAAIwIAAOMBAAAAAAAAQQAAACMAAABiAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAABAgAAAgIAAAMCAAAAAAAAYQAAAGIAAABiAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYQAAAGIAAABiAAAAIgAAAEIAAABDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAIIAAAADAAAAYgAAAGIAAAAiAAAAQgAAAEIAAABDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAAAggAAAAMAAABiAAAAYgAAAGIAAAAiAAAAQgAAAEIAAABCAAAAAAAAAAAAAAAAAAAAAAAAAIEAAACCAAAAggAAAAMAAABiAAAAYgAAAGIAAABiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIEAAACCAAAAggAAAIIAAACCAAAA",
          "encoding":"base64",
          "height":12,
-         "name":"funstuff",
+         "name":"decor",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":12,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAABdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAABdAAAAXQAAAD4AAAC9AAAAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAXAAAAD4AAAC8AAAAvQAAALwAAAC8AAAAYAIAAF8CAAAAAAAAAAAAAAAAAAAAAAAAfAAAALwAAAC+AAAAvAAAAL4AAAC9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAAAAJ0AAAAeAAAAvgAAAL0AAAC9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8AAAAvAAAAL4AAAC+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAnQAAAB4AAAC8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAACdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+         "encoding":"base64",
+         "height":12,
+         "name":"blocked",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
@@ -31,7 +43,7 @@
          "name":"island",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":12,
          "x":0,
          "y":0
@@ -124,6 +136,66 @@
                  "width":0,
                  "x":382,
                  "y":47
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":46,
+                         "y":-49
+                        }, 
+                        {
+                         "x":104,
+                         "y":2
+                        }, 
+                        {
+                         "x":172,
+                         "y":-44
+                        }, 
+                        {
+                         "x":263,
+                         "y":-7
+                        }, 
+                        {
+                         "x":339,
+                         "y":-41
+                        }, 
+                        {
+                         "x":375,
+                         "y":-12
+                        }, 
+                        {
+                         "x":367,
+                         "y":30
+                        }, 
+                        {
+                         "x":-52,
+                         "y":27
+                        }, 
+                        {
+                         "x":-48,
+                         "y":-35
+                        }, 
+                        {
+                         "x":0,
+                         "y":2
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":23,
+                 "y":375
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -132,7 +204,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "properties":
     {
