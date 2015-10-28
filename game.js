@@ -8,6 +8,7 @@ var map;
 var p;
 var buttons, spacebar, cursors;
 var is_floating = false;
+var things_group;
 
 function preload() {
   game.load.image('walrus', 'walrus.png');
@@ -33,7 +34,7 @@ function create() {
 
   layer.resizeWorld();
 
-
+  things_group = game.add.group();
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -43,6 +44,10 @@ function create() {
   game.physics.arcade.enable(p);
   game.camera.follow(p);
   p.body.collideWorldBounds = true;
+  p.body.setSize(16, 16, 8, 8);
+  things_group.add(p);
+
+  things_group.sort();
 
   cursors = game.input.keyboard.createCursorKeys();
   buttons = game.input.keyboard.addKeys({
@@ -55,7 +60,8 @@ function create() {
 
 function dig() {
   console.log('dig');
-  game.add.sprite(p.body.x, p.body.y, Date.now() % 2 ? 'crate1' : 'crate2');
+  var crate = game.add.sprite(p.body.x, p.body.y, Date.now() % 2 ? 'crate1' : 'crate2');
+  things_group.add(crate);
 }
 
 function incTo(current, max, step) {
@@ -119,6 +125,8 @@ function update() {
   // Math.sign(p.body.velocity)
   // p.body.velocity.y -= 2;
   // p.body.velocity.x -= 2;
+
+  things_group.sort('y', Phaser.Group.SORT_ASCENDING);
 }
 
 function render() {
