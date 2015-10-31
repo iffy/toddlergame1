@@ -9,10 +9,13 @@ var p;
 var buttons, spacebar, cursors;
 var is_floating = false;
 var things_group;
+var balls_group;
+
 
 function preload() {
   game.load.spritesheet('girl', 'girl.png', 32, 32);
   game.load.spritesheet('ball', 'ball.png', 32, 32);
+  game.load.image('star', 'star.png');
   game.load.image('walrus', 'walrus.png');
   game.load.image('crate1', 'crate1-32.png');
   game.load.image('crate2', 'crate2-32.png');
@@ -34,11 +37,16 @@ function create() {
   layer3 = map.createLayer('blocked');
   map.setCollisionBetween(1, 1025, true, 'blocked');
 
+  top_of_corn = 272;
+  console.log('map', map);
+
   layer4 = map.createLayer('island');
 
   layer.resizeWorld();
 
   things_group = game.add.group();
+  balls_group = game.add.group();
+
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -63,9 +71,10 @@ function create() {
   ball.body.collideWorldBounds = true;
   ball.body.bounce.x = 0.7;
   ball.body.bounce.y = 0.7;
-  things_group.add(ball);
+  balls_group.add(ball);
 
   things_group.sort();
+  things_group.add(balls_group);
 
   cursors = game.input.keyboard.createCursorKeys();
   buttons = game.input.keyboard.addKeys({
@@ -74,12 +83,28 @@ function create() {
   spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
 
   spacebar.onDown.add(dig);
+
+  game.input.keyboard.addKey(Phaser.KeyCode.S)
+  .onDown.add(makeStar);
+}
+
+function makeStar() {
+  var star = game.add.sprite(p.body.x + (Math.random() * 500 - 250),
+    p.body.y + (Math.random() * 500 - 250), 'star');
+  things_group.add(star);
 }
 
 function dig() {
   console.log('dig');
-  var crate = game.add.sprite(p.body.x, p.body.y, Date.now() % 2 ? 'crate1' : 'crate2');
-  things_group.add(crate);
+  var ball = game.add.sprite(p.body.x, p.body.y, 'ball')
+  game.physics.arcade.enable(ball);
+  ball.body.collideWorldBounds = true;
+  ball.body.bounce.x = 0.7;
+  ball.body.bounce.y = 0.7;
+  ball.body.drag.set(50);
+  ball.body.velocity.x = Math.floor(Math.random() * 400 - 200);
+  ball.body.velocity.y = Math.floor(Math.random() * 400 - 200);
+  balls_group.add(ball);
 }
 
 function incTo(current, max, step) {
@@ -95,8 +120,11 @@ function approachZero(x) {
 function update() {
 
   game.physics.arcade.collide(p, layer3);
-  game.physics.arcade.collide(ball, layer3);
-  game.physics.arcade.collide(p, ball);
+  for (var i = 0; i < balls_group.children.length; i++) {
+    var b = balls_group.children[i];
+    game.physics.arcade.collide(p, b);
+    game.physics.arcade.collide(b, layer3);
+  }
 
   var being_moved = false;
   var anim = null;
