@@ -12,6 +12,7 @@ var things_group;
 
 function preload() {
   game.load.spritesheet('girl', 'girl.png', 32, 32);
+  game.load.spritesheet('ball', 'ball.png', 32, 32);
   game.load.image('walrus', 'walrus.png');
   game.load.image('crate1', 'crate1-32.png');
   game.load.image('crate2', 'crate2-32.png');
@@ -33,6 +34,8 @@ function create() {
   layer3 = map.createLayer('blocked');
   map.setCollisionBetween(1, 1025, true, 'blocked');
 
+  layer4 = map.createLayer('island');
+
   layer.resizeWorld();
 
   things_group = game.add.group();
@@ -41,16 +44,26 @@ function create() {
 
 
   // player
-  p = game.add.sprite(game.world.centerX, game.world.centerY, 'girl');
-
+  p = game.add.sprite(32, 32, 'girl');
   p.animations.add('walkdown', [1,2], 10);
-  p.animations.add('walkup', [3,4], 10);
+  p.animations.add('walkup', [4,5], 10);
+  p.animations.add('walkhoriz', [7,6,8,6], 15);
+
+  p.anchor.setTo(.5, .5);
 
   game.physics.arcade.enable(p);
   game.camera.follow(p);
   p.body.collideWorldBounds = true;
-  p.body.setSize(16, 16, 8, 8);
+  p.body.setSize(16, 10, 0, 12);
   things_group.add(p);
+
+  // ball
+  ball = game.add.sprite(64, 64, 'ball');
+  game.physics.arcade.enable(ball);
+  ball.body.collideWorldBounds = true;
+  ball.body.bounce.x = 0.7;
+  ball.body.bounce.y = 0.7;
+  things_group.add(ball);
 
   things_group.sort();
 
@@ -82,26 +95,40 @@ function approachZero(x) {
 function update() {
 
   game.physics.arcade.collide(p, layer3);
+  game.physics.arcade.collide(ball, layer3);
+  game.physics.arcade.collide(p, ball);
 
   var being_moved = false;
+  var anim = null;
+  var xscale = 1;
   var dy = 0;
   var dx = 0;
 
   if (cursors.up.isDown) {
     dy -= 200;
     being_moved = true;
+    anim = 'walkup';
+    p.resting_frame = 3;
   }
   if (cursors.down.isDown) {
     dy += 200;
     being_moved = true;
+    anim = 'walkdown';
+    p.resting_frame = 0;
   }
   if (cursors.right.isDown) {
     dx += 200;
     being_moved = true;
+    anim = 'walkhoriz';
+    xscale = 1;
+    p.resting_frame = 6;
   }
   if (cursors.left.isDown) {
     dx -= 200;
     being_moved = true;
+    anim = 'walkhoriz';
+    xscale = -1;
+    p.resting_frame = 6;
   }
   if (buttons.w.isDown) {
     if (!is_floating) {
@@ -134,25 +161,19 @@ function update() {
     p.body.velocity.x = approachZero(p.body.velocity.x);
   }
 
-  var walkdown = p.animations.getAnimation('walkdown');
-  var walkup = p.animations.getAnimation('walkup');
-  if (p.body.velocity.y > 0) {
-    if (!walkdown.isPlaying) {
-      walkdown.play(null, true);
+  if (anim) {
+    anim = p.animations.getAnimation(anim);
+    if (p.animations.currentAnim !== anim) {
+      p.animations.currentAnim.stop();
     }
-  } else if (p.body.velocity.y < 0) {
-    if (!walkup.isPlaying) {
-      walkup.play(null, true);
+    if (!anim.isPlaying) {
+      p.scale.x = xscale;
+      anim.play(null, true);
     }
   } else {
-    walkdown.stop();
-    walkup.stop();
-    p.animations.frame = 0;
+    p.animations.stop();
+    p.animations.frame = p.resting_frame;
   }
-
-  // Math.sign(p.body.velocity)
-  // p.body.velocity.y -= 2;
-  // p.body.velocity.x -= 2;
 
   things_group.sort('y', Phaser.Group.SORT_ASCENDING);
 }
