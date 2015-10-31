@@ -11,6 +11,7 @@ var is_floating = false;
 var things_group;
 
 function preload() {
+  game.load.spritesheet('girl', 'girl.png', 32, 32);
   game.load.image('walrus', 'walrus.png');
   game.load.image('crate1', 'crate1-32.png');
   game.load.image('crate2', 'crate2-32.png');
@@ -40,7 +41,11 @@ function create() {
 
 
   // player
-  p = game.add.sprite(game.world.centerX, game.world.centerY, 'walrus');
+  p = game.add.sprite(game.world.centerX, game.world.centerY, 'girl');
+
+  p.animations.add('walkdown', [1,2], 10);
+  p.animations.add('walkup', [3,4], 10);
+
   game.physics.arcade.enable(p);
   game.camera.follow(p);
   p.body.collideWorldBounds = true;
@@ -68,6 +73,10 @@ function incTo(current, max, step) {
   var val = current + step;
   val = (Math.abs(val) >= Math.abs(max) && Math.sign(val) == Math.sign(max)) ? max : val;
   return val;
+}
+
+function approachZero(x) {
+  return Math.floor(Math.abs(x)) * Math.sign(x);
 }
 
 function update() {
@@ -117,10 +126,29 @@ function update() {
     p.body.velocity.x = dx;
     p.body.velocity.y = dy;
   } else {
-      // user is not pressing any buttons.
-      p.body.velocity.x *= 0.7;
-      p.body.velocity.y *= 0.7;
+    // user is not pressing any buttons.
+    p.body.velocity.x *= 0.5;
+    p.body.velocity.y *= 0.5;
+
+    p.body.velocity.y = approachZero(p.body.velocity.y);
+    p.body.velocity.x = approachZero(p.body.velocity.x);
+  }
+
+  var walkdown = p.animations.getAnimation('walkdown');
+  var walkup = p.animations.getAnimation('walkup');
+  if (p.body.velocity.y > 0) {
+    if (!walkdown.isPlaying) {
+      walkdown.play(null, true);
     }
+  } else if (p.body.velocity.y < 0) {
+    if (!walkup.isPlaying) {
+      walkup.play(null, true);
+    }
+  } else {
+    walkdown.stop();
+    walkup.stop();
+    p.animations.frame = 0;
+  }
 
   // Math.sign(p.body.velocity)
   // p.body.velocity.y -= 2;
